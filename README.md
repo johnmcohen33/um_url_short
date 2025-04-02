@@ -6,7 +6,7 @@ Here’s my take on a URL shortener. I embraced the “rudimentary solution” b
 
 This is a lightweight, developer-friendly app built with [FastAPI](https://fastapi.tiangolo.com/), [SQLModel](https://sqlmodel.tiangolo.com/), and [SQLite](https://www.sqlite.org/index.html).
 
-I spent around **4 hours** on this solution. I probably tinkered with OAuth2 way more than necessary, but it was a good learning experience — and I wanted to make sure the app included protected routes and a basic user flow, as that would likely be part of any real system.
+I spent around **4 hours** on this solution. Originally I tried to create something Dockerized, with a PostgreSQL DB but frankly was running into too many issues for this level of assignment. I probably tinkered with OAuth2 in the final solution way more than necessary, but it was a good learning experience — and I wanted to make sure the app included protected routes and a basic user flow, as that would likely be part of any real system.
 
 **Note on Auth:**  
 The `auth.py` file is adapted directly from the FastAPI docs:  
