@@ -48,6 +48,44 @@ pip install -r requirements.txt
 fastapi dev app/main.py
 ```
 
+## Usage
+
+Once the app is running, visit the base URL:
+
+**http://127.0.0.1:8000**
+
+Interactive API documentation is available at:
+
+**http://127.0.0.1:8000/docs**
+
+This is the easiest way to explore and test all available endpoints. Below are some special instructions around redirect behavior if you wanna see the shortener in action!
+
+## Redirect Behavior
+
+One feature that may not be immediately obvious is that the app supports **URL redirection** using the generated short links.
+
+### How to Use It:
+
+1. Visit:
+
+   **http://127.0.0.1:8000/urls/**  
+   This will return a list of all saved short URLs.
+
+2. Take one of the `short_url` values and append it to the base URL.  
+   For example, if the response looks like:
+
+   ```json
+   {
+       "expiration_date": null,
+       "short_url": "4AphGHq",
+       "long_url": "https://www.arsenal.com/"
+   }
+   ```
+
+3.	Navigate to:
+http://127.0.0.1:8000/4AphGHq
+This will automatically redirect you to https://www.arsenal.com/
+
 ## API Documentation
 
 Swagger docs: http://127.0.0.1:8000/docs
