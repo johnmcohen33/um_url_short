@@ -76,6 +76,8 @@ Ummm there are a lot that come to mind.
 Off the top of my head
 - Support for custom aliases
 - Support for expiration dates
+- Ensure URLs are safe
+- Ensure URLs map to websites we are comfortable with
 - Add analytics
 - Dockerize the app
 - I'm sure there is a smart way to prevent collisions without hitting the DB an extra time
