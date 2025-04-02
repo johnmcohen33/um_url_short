@@ -86,13 +86,6 @@ One feature that may not be immediately obvious is that the app supports **URL r
 http://127.0.0.1:8000/4AphGHq
 This will automatically redirect you to https://www.arsenal.com/
 
-## API Documentation
-
-Swagger docs: http://127.0.0.1:8000/docs
-
-I am sure you are familiar but Swagger is awesome ! and you should be able to see this API in action there.
-(Once you run it !)
-
 ## Project Layout
 
 ```
