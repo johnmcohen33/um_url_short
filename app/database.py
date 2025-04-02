@@ -5,7 +5,8 @@ from sqlmodel import SQLModel, Session, create_engine
 DATABASE_URL = "sqlite:///./test.db"
 engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
 
-# Dependency to get DB session
+# Dependency that provides a new database session per request.
+# Ensures sessions are short-lived and safely scoped for concurrency!
 def get_db():
     with Session(engine) as session:
         yield session

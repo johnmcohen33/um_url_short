@@ -9,6 +9,8 @@ from app.config import settings
 
 import shortuuid
 
+from app.routes.auth import UserDep
+
 url_shortener_router = APIRouter()
 
 def generate_unique_id(db_session: SessionDep) -> str:
@@ -61,7 +63,31 @@ async def redirect_url(short_id: str, db_session: SessionDep):
     return RedirectResponse(url=url_entry.long_url, status_code=301) # temporary redirect
 
 @url_shortener_router.get("/urls/")
-async def get_short_urls(db_session: SessionDep):
-    """ WARNING: THIS IS NOT A GOOD METHOD! IT'S JUST FOR US TO TEST EASILY ! """
+async def get_all_users_short_urls(db_session: SessionDep):
+    """ WARNING: THIS IS NOT A GOOD METHOD! IT'S JUST FOR US TO TEST EASILY ! 
+    RETURNS: ALL USERS' SHORT URLS
+    """
     # TODO: Remove this method ! Just for DEV
     return get_all_short_urls_db(db_session)
+
+## REGION: PROTECTED ROUTES ! 
+
+@url_shortener_router.post("/power_shorten/")
+async def create_power_short_url(long_url: str, db_session: SessionDep, user_dep: UserDep):
+    """
+    Example of a protected route that requires authentication.
+
+    This endpoint creates a shortened URL, but only for authenticated users.
+    It's a simple way to show how we can restrict access using FastAPI's dependency injection.
+
+    Args:
+        long_url (str): The original URL to be shortened.
+        db_session (SessionDep): Database session.
+        user_dep (UserDep): The current authenticated user (injected automatically).
+
+    Returns:
+        dict: A message with the newly created short URL.
+    """
+    unique_short_id = generate_unique_id(db_session)
+    create_short_url_db(long_url=long_url, unique_short_url=unique_short_id, db=db_session)
+    return {"message": f"new power short_url created! Here it is: {settings.BASE_URL}/{unique_short_id}"}
