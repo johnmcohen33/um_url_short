@@ -105,6 +105,9 @@ app/
 Ummm there are a lot that come to mind.
 
 Off the top of my head
+- TESTING TESTING TESTING
+    - I was already way over on time so I didn't add.
+    - I did try to organize the project in a way that testing concerns could be seperated.
 - Support for custom aliases
 - Support for expiration dates
 - Ensure URLs are safe
